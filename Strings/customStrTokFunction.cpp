@@ -17,12 +17,12 @@ char* customStrTok(char* input, char delim) {
     char *token = new char[strlen(str) + 1]; // +1 for null character
     int i {0};
 
-    for(; input[i] != '\0'; i++) {
-        if(input[i] != delim) {
-            token[i] = input[i];
+    for(; str[i] != '\0'; i++) {
+        if(str[i] != delim) {
+            token[i] = str[i];
         } else {
             token[i] = '\0';
-            input = input + i + 1; // Move the pointer
+            str = str + i + 1; // Move the pointer
 
             return token;
         }
@@ -30,7 +30,7 @@ char* customStrTok(char* input, char delim) {
 
     token[i] = '\0';
     // Reset the input.
-    input = nullptr;
+    str = nullptr;
 
     return token;
 }
