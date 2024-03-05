@@ -17,13 +17,27 @@ string extractStringAtKey(string str, int key) {
     return (string)s;
 }
 
+int convertToInt(string s) {
+  int answer = 0;
+  int position = 1;
+
+  for(int i = s.length() - 1; i >= 0; i--) {
+    answer += ((s[i] - '0') * position);
+    position *= 10;
+  }
+
+  return answer;
+}
+
 bool numericCompare(pair<string, string> s1, pair<string, string> s2) {
     string key1, key2;
 
     key1 = s1.second;
     key2 = s2.second;
 
-    return atoi(key1.c_str()) < atoi(key2.c_str());
+    // We could use "atoi" function here, but using a custom function here
+    // just to show the full process.
+    return convertToInt(key1.c_str()) < convertToInt(key2.c_str());
 }
 
 bool lexicoCompare(pair<string, string> s1, pair<string, string> s2) {
