@@ -1,5 +1,5 @@
 #include<iostream>
-#include<cstring> // For len
+#include<cstring> // For strlen
 
 #include "../utils.hpp"
 
