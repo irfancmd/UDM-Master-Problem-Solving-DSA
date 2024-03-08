@@ -2,6 +2,10 @@
 
 #include "../utils.hpp"
 
+/*
+  Link: https://leetcode.com/problems/is-subsequence/
+*/
+
 bool isSubset(string s1, string s2) {
     int i {s1.length() - 1};
     int j {s2.length() - 1};
@@ -30,4 +34,3 @@ int main() {
 
     return 0;
 }
-
