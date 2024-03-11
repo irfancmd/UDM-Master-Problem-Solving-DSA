@@ -1,26 +1,47 @@
 #include<iostream>
 #include<string>
+#include<unordered_map>
 #include "../utils.hpp"
 
 using namespace std;
 
-string uniqueSubstring(string str) {
+string largestUniqueSubstring(string str) {
   int currentWindowLength = 0;
   int maxWindowLength = 0;
-  int startindex = -1;
+  int startIndex = -1;
 
   int i = 0;
   int j = 0;
 
+  unordered_map<char, int> m;
 
+  while(j < str.length()) {
+    char ch = str[j];
+
+    if(m.count(ch) && m[ch] >= i) {
+      // The character is already in the current window
+      i = m[ch] + 1;
+      
+      currentWindowLength = j - i;
+    }
+
+    m[ch] = j;
+    currentWindowLength++;
+    j++;
+
+    if(currentWindowLength > maxWindowLength) {
+      maxWindowLength = currentWindowLength;
+      startIndex = i;
+    }
+  }
+
+  return str.substr(startIndex, maxWindowLength);
 }
 
 int main() {
-  int plots[] = { 1, 3, 2, 1, 4, 1, 3, 2, 1, 1 };
-  int n = sizeof(plots) / sizeof(int);
-  int k = 8;
+  string str = "abcabed";
 
-  housing(plots, n, k);
+  cout << largestUniqueSubstring(str) << endl; 
 
   return 0;
 }
